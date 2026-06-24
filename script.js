@@ -6,7 +6,7 @@ const resetBtn = document.getElementById('resetBtn');
 let countdownInterval;
 let totalSeconds = 0;
 
-// Start the timer
+// Start the timer 
 startBtn.addEventListener('click', ()=>{
 clearInterval(countdownInterval);// If a previous timer is running, stop it.
 const minutes = parseInt(minutesInput.value);
@@ -40,7 +40,7 @@ function updateDisplay(){
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-// Display with two digits
+// Display  with  two  digits
 timerDisplay.textContent = 
 String(hours).padStart(2,'0')+ ':' +
 String(minutes).padStart(2, '0')+ ':' +
