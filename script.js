@@ -6,12 +6,12 @@ const resetBtn = document.getElementById('resetBtn');
 let countdownInterval;
 let totalSeconds = 0;
 
-//شروع تایمر
+// Start the timer
 startBtn.addEventListener('click', ()=>{
-clearInterval(countdownInterval);//اگر تایمر قبلی در حال اجرا بود، متوقف شود.
+clearInterval(countdownInterval);// If a previous timer is running, stop it.
 const minutes = parseInt(minutesInput.value);
 if (isNaN(minutes) || minutes < 0){
-    alert("لطفا یک عدد صحیح وارد کنید.");
+    alert("Please enter a valid number.");
     return;
 }
 totalSeconds = minutes * 60;
@@ -21,12 +21,12 @@ countdownInterval = setInterval(()=>{
     updateDisplay();
     if(totalSeconds <= 0){
         clearInterval(countdownInterval);
-        alert("زمان به پایان رسید.");
+        alert("Time is up!");
     }
 },1000);
 });
 
-//ریست تایمر
+// Reset the timer
 resetBtn.addEventListener('click', ()=>{
     clearInterval(countdownInterval);
     totalSeconds = 0;
@@ -34,13 +34,13 @@ resetBtn.addEventListener('click', ()=>{
     minutesInput.value="";
 });
 
-//تابع به روز رسانی نمایشگر
+// Update the display function
 function updateDisplay(){
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-//نمایش با دو رقم
+// Display with two digits
 timerDisplay.textContent = 
 String(hours).padStart(2,'0')+ ':' +
 String(minutes).padStart(2, '0')+ ':' +
